@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manoj Kumar S | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#0b0f19;
+    --card:#111827;
+    --glass:rgba(255,255,255,0.05);
+    --accent1:#6366f1;
+    --accent2:#22d3ee;
+    --text:#e5e7eb;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* Scroll Progress */
+#progress{
+    position:fixed;top:0;left:0;height:4px;
+    background:linear-gradient(90deg,var(--accent1),var(--accent2));
+    z-index:999;width:0%;
+}
+
+/* Navbar */
+nav{
+    position:fixed;top:0;width:100%;
+    display:flex;justify-content:center;
+    padding:15px;
+    backdrop-filter:blur(12px);
+    background:rgba(255,255,255,0.05);
+    z-index:1000;
+}
+nav a{
+    margin:0 15px;text-decoration:none;
+    color:#cbd5e1;font-weight:500;
+    transition:0.3s;
+}
+nav a.active,nav a:hover{color:var(--accent2)}
+
+/* Sections */
+section{
+    min-height:100vh;
+    padding:100px 10%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+/* Hero */
+.hero{
+    text-align:center;
+    position:relative;
+}
+.hero h1{
+    font-size:3rem;
+    background:linear-gradient(90deg,var(--accent1),var(--accent2));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+.typing{margin-top:10px;font-size:1.2rem}
+.hero::before{
+    content:'';
+    position:absolute;
+    width:600px;height:600px;
+    background:radial-gradient(circle,var(--accent1),transparent);
+    filter:blur(120px);
+    top:-100px;left:-100px;
+    animation:float 8s infinite alternate;
+}
+@keyframes float{
+    to{transform:translate(200px,150px)}
+}
+
+/* Cards */
+.card{
+    background:var(--glass);
+    backdrop-filter:blur(14px);
+    border-radius:20px;
+    padding:25px;
+    margin-top:20px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
+    transition:0.4s;
+}
+.card:hover{
+    transform:translateY(-8px) scale(1.02);
+}
+
+/* Skills */
+.skill{margin:15px 0}
+.bar{
+    background:#1f2937;
+    border-radius:10px;
+    overflow:hidden;height:8px;
+}
+.bar span{
+    display:block;height:100%;
+    background:linear-gradient(90deg,var(--accent1),var(--accent2));
+    width:0;
+}
+
+/* Timeline */
+.timeline{
+    border-left:2px solid #334155;
+    padding-left:20px;
+}
+.timeline div{margin-bottom:20px}
+
+/* Projects */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.project{cursor:pointer}
+
+/* Modal */
+.modal{
+    position:fixed;
+    top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.7);
+    display:flex;justify-content:center;align-items:center;
+    opacity:0;pointer-events:none;
+    transition:0.3s;
+}
+.modal.active{opacity:1;pointer-events:auto}
+.modal-content{
+    background:var(--card);
+    padding:30px;border-radius:20px;
+    max-width:500px;
+}
+
+/* Contact */
+input,textarea{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:none;border-radius:10px;
+    background:#1f2937;color:white;
+}
+button{
+    padding:10px 20px;border:none;
+    border-radius:10px;
+    background:linear-gradient(90deg,var(--accent1),var(--accent2));
+    color:white;cursor:pointer;
+}
+
+/* Footer */
+footer{text-align:center;padding:20px;color:#94a3b8}
+
+/* Back to top */
+#topBtn{
+    position:fixed;bottom:20px;right:20px;
+    padding:10px;border:none;border-radius:50%;
+    background:var(--accent1);color:white;
+    display:none;
+}
+
+/* Animations */
+.hidden{opacity:0;transform:translateY(40px);transition:0.8s}
+.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+.hero h1{font-size:2rem}
+}
+</style>
+</head>
+
+<body>
+
+<div id="progress"></div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#experience">Experience</a>
+<a href="#projects">Projects</a>
+<a href="#education">Education</a>
+<a href="#certifications">Certifications</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<section id="home" class="hero">
+<h1>Manoj Kumar S</h1>
+<p class="typing"></p>
+</section>
+
+<section id="about" class="hidden">
+<h2>About</h2>
+<div class="card">
+<p>Computer Science graduate skilled in Data Analytics, Full-Stack Development, and AI/ML. Passionate about building intelligent systems and scalable applications.</p>
+</div>
+</section>
+
+<section id="skills" class="hidden">
+<h2>Skills</h2>
+
+<div class="skill"><p>Python</p><div class="bar"><span data-width="90%"></span></div></div>
+<div class="skill"><p>SQL</p><div class="bar"><span data-width="85%"></span></div></div>
+<div class="skill"><p>React.js</p><div class="bar"><span data-width="80%"></span></div></div>
+<div class="skill"><p>Machine Learning</p><div class="bar"><span data-width="75%"></span></div></div>
+
+</section>
+
+<section id="experience" class="hidden">
+<h2>Experience</h2>
+<div class="timeline">
+<div>
+<h3>AI Project Developer</h3>
+<p>Built ML models improving accuracy by 18%</p>
+</div>
+<div>
+<h3>Data Analyst Project</h3>
+<p>Reduced data review time by 30%</p>
+</div>
+</div>
+</section>
+
+<section id="projects" class="hidden">
+<h2>Projects</h2>
+<div class="projects">
+
+<div class="card project" onclick="openModal('AI Web App with TensorFlow and React')">
+<h3>AI Web App</h3>
+<p>Image classification system</p>
+</div>
+
+<div class="card project" onclick="openModal('Data Analytics Dashboard using Python & Excel')">
+<h3>Analytics Dashboard</h3>
+<p>Business insights platform</p>
+</div>
+
+</div>
+</section>
+
+<section id="education" class="hidden">
+<h2>Education</h2>
+<div class="timeline">
+<div><h3>B.E Computer Science</h3><p>CGPA: 7.11</p></div>
+<div><h3>PUC</h3><p>79%</p></div>
+</div>
+</section>
+
+<section id="certifications" class="hidden">
+<h2>Certifications</h2>
+<div class="card">
+<ul>
+<li>Data Analytics – Qspiders</li>
+<li>Excel Visualization – UniAthena</li>
+<li>Python Basics – UniAthena</li>
+<li>AWS Cloud Practitioner (In Progress)</li>
+</ul>
+</div>
+</section>
+
+<section id="contact" class="hidden">
+<h2>Contact</h2>
+<form class="card">
+<input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
+<textarea rows="4" placeholder="Message"></textarea>
+<button>Send</button>
+</form>
+</section>
+
+<footer>© 2026 Manoj Kumar S</footer>
+
+<button id="topBtn">↑</button>
+
+<div class="modal" id="modal">
+<div class="modal-content">
+<p id="modalText"></p>
+<button onclick="closeModal()">Close</button>
+</div>
+</div>
+
+<script>
+// Typing
+const roles=["Data Analyst","Software Developer","AI Enthusiast"];
+let i=0,j=0,current='',del=false;
+function type(){
+if(i<roles.length){
+if(!del && j<=roles[i].length) current=roles[i].substring(0,j++);
+else if(del && j>=0) current=roles[i].substring(0,j--);
+document.querySelector('.typing').textContent=current;
+if(j==roles[i].length) del=true;
+if(j==0){del=false;i++;}
+}
+setTimeout(type,100);
+}
+type();
+
+// Scroll Progress + Navbar active
+window.onscroll=()=>{
+let s=document.documentElement.scrollTop;
+let h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+document.getElementById("progress").style.width=(s/h)*100+"%";
+
+document.getElementById("topBtn").style.display=s>300?"block":"none";
+
+document.querySelectorAll("section").forEach(sec=>{
+let top=window.scrollY;
+if(top>=sec.offsetTop-150){
+document.querySelectorAll("nav a").forEach(a=>a.classList.remove("active"));
+let id=sec.getAttribute("id");
+document.querySelector(`nav a[href="#${id}"]`).classList.add("active");
+}
+});
+};
+
+// Back to top
+topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+// Observer
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})
+});
+document.querySelectorAll('.hidden').forEach(el=>obs.observe(el));
+
+// Skills animate
+const skillObs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.querySelectorAll('span').forEach(bar=>{
+bar.style.width=bar.dataset.width;
+});
+}
+});
+});
+skillObs.observe(document.querySelector('#skills'));
+
+// Modal
+function openModal(text){
+modal.classList.add("active");
+modalText.innerText=text;
+}
+function closeModal(){
+modal.classList.remove("active");
+}
+</script>
+
+</body>
+</html>
